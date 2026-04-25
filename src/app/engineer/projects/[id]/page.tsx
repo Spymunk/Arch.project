@@ -72,21 +72,17 @@ export default function EngineerProjectReview() {
               border: '1px solid var(--border)',
               overflow: 'hidden',
               display: 'grid',
-              gridTemplateColumns: '400px 1fr'
+              gridTemplateColumns: update.videoUrl ? '400px 1fr' : '1fr'
             }}>
               {/* Video Preview */}
-              <div style={{ backgroundColor: '#000', position: 'relative' }}>
-                {update.videoUrl ? (
-                  <video src={update.videoUrl} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                ) : (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#4b5563' }}>
-                    <Play size={40} opacity={0.3} />
+              {update.videoUrl && (
+                <div style={{ backgroundColor: '#000', position: 'relative' }}>
+                  <video src={update.videoUrl} style={{ width: '100%', height: '100%', objectFit: 'cover' }} controls />
+                  <div style={{ position: 'absolute', bottom: '20px', left: '20px', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '5px 12px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 600 }}>
+                    CONSTRUCTION FEED
                   </div>
-                )}
-                <div style={{ position: 'absolute', bottom: '20px', left: '20px', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '5px 12px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 600 }}>
-                  CONSTRUCTION FEED
                 </div>
-              </div>
+              )}
 
               {/* Commenting Area */}
               <div style={{ padding: '40px' }}>
